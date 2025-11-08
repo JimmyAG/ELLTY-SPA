@@ -26,27 +26,27 @@ app.use(compression())
 app.disable('x-powered-by')
 
 app.use(function (req, res, next) {
-    const allowedOriginsPattern =
-        /^(http:\/\/localhost:\d+|http:\/\/127\.0\.0\.1:\d+)$/
     const origin = req.headers.origin
-
-    res.header('X-XSS-Protection', '1; mode=block')
-    res.header('X-Frame-Options', 'deny')
-    res.header('X-Content-Type-Options', 'nosniff')
-
-    if (allowedOriginsPattern.test(origin))
+    if (
+        origin &&
+        (origin.includes('localhost') || origin.includes('railway.app'))
+    ) {
         res.header('Access-Control-Allow-Origin', origin)
+    }
 
     res.header(
         'Access-Control-Allow-Methods',
-        'POST, PUT, DELETE, GET, OPTIONS, PATCH'
+        'GET, POST, PUT, DELETE, OPTIONS'
     )
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
     res.header(
         'Access-Control-Allow-Headers',
-        'Content-Type, authcode, refreshcode'
+        'Content-Type, Authorization, authcode, refreshcode'
     )
     res.header('Access-Control-Allow-Credentials', 'true')
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end()
+    }
 
     next()
 })
@@ -73,7 +73,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Express server is running on ${protocol}://localhost:${PORT}`)
+    console.log(`Express server is running on ${protocol}://0.0.0.0:${PORT}`)
 })
 
 process.on('unhandledRejection', (reason, promise) => {

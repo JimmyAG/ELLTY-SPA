@@ -1,0 +1,28 @@
+type Props = {
+  color: string
+  height: string
+  width: string
+}
+
+const IconSpinning = ({ color, height, width }: Props) => {
+  const h = `${height}rem`
+  const w = `${width}rem`
+  return (
+    <div
+      role='status'
+      style={{
+        height: h,
+        width: w,
+        borderColor: color,
+        borderRightColor: 'transparent',
+      }}
+      className='inline-block animate-spin rounded-full border-4 border-solid align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+    >
+      <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+        Loading...
+      </span>
+    </div>
+  )
+}
+
+export default IconSpinning

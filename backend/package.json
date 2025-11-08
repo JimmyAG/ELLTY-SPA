@@ -5,7 +5,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
-        "start": "env-cmd npx sequelize-cli db:migrate && ts-node app.ts",
+        "start": "env-cmd ts-node app.ts",
         "dev": "nodemon app.ts",
         "prepare": "husky",
         "lint": "eslint ."

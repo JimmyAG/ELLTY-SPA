@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import ReplyForm from '../../forms/ReplyForm'
 import { Post, ViewPost } from '@/@types/post'

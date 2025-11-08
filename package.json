@@ -1,0 +1,7 @@
+{
+  "name": "fullstack-app",
+  "private": true,
+  "scripts": {
+    "start": "./start.sh"
+  }
+}

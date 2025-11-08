@@ -5,7 +5,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
-        "start": "env-cmd ts-node app.ts",
+        "start": "ts-node app.ts",
         "dev": "nodemon app.ts",
         "prepare": "husky",
         "lint": "eslint ."

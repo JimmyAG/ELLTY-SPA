@@ -72,10 +72,7 @@ if (process.env.NODE_ENV === 'development') {
     server = http.createServer(app)
 }
 
-server.listen(PORT, () => {
-    console.log(`Express server is running on ${protocol}://localhost:${PORT}`)
-})
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`Express server is running on ${protocol}://localhost:${PORT}`)
 })
 

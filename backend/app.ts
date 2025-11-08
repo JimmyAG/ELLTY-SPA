@@ -67,11 +67,14 @@ if (process.env.NODE_ENV === 'development') {
     PORT = 3001
     server = http.createServer(app)
 } else {
-    protocol = 'https'
-    PORT = 443
-    server = https.createServer(app)
+    protocol = 'http' // Railway
+    PORT = parseInt(process.env.PORT) || 3001
+    server = http.createServer(app)
 }
 
+server.listen(PORT, () => {
+    console.log(`Express server is running on ${protocol}://localhost:${PORT}`)
+})
 server.listen(PORT, () => {
     console.log(`Express server is running on ${protocol}://localhost:${PORT}`)
 })

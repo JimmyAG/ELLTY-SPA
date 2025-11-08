@@ -2,6 +2,6 @@
   "name": "fullstack-app",
   "private": true,
   "scripts": {
-    "start": "./start.sh"
+    "start": "chmod +x start.sh && ./start.sh"
   }
 }
